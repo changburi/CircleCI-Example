@@ -41,9 +41,9 @@ jobs:
       - run: docker save -o circleci-example.tar circleci/example
       - add_ssh_keys:
           fingerprints:
-            - "da:ef:66:37:3b:1c:9d:9e:de:8a:9b:ec:94:85:9d:d8"
+            - "4b:7d:60:c6:c6:8f:f3:13:d5:c4:1e:41:48:e7:5b:e3"
       - run: rsync -ah -e "ssh -o StrictHostKeyChecking=no" circleci-example.tar username@server.address:/path/to/send
-      - run: ssh username@127.0.0.1 "cd /path/to/send; docker load -i circleci-example.tar; docker run circleci/example"
+      - run: ssh username@34.232.69.182 "cd /path/to/send; docker load -i circleci-example.tar; docker run circleci/example"
 # build-and-test라는 workflow에는 build-and-test라는 Job을 가지고 있다는 의미입니다.
 workflows:
     build-and-test:
