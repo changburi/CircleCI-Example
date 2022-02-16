@@ -42,8 +42,8 @@ jobs:
       - add_ssh_keys:
           fingerprints:
             - "e8:3f:a3:a1:7f:4b:bc:08:b5:a6:f1:30:d6:9a:12:d6"
-      - run: rsync -ah -e "ssh -o -i ocjub-stg-key.pem StrictHostKeyChecking=no" circleci-example.tar ec2-user@107.23.232.171:/path/to/send
-      - run: ssh -i ocjub-stg-key.pem ec2-user@107.23.232.171 "cd /path/to/send; docker load -i circleci-example.tar; docker run circleci/example"
+      - run: rsync -ah -e "ssh -o StrictHostKeyChecking=no" circleci-example.tar ec2-user@107.23.232.171:/path/to/send
+      - run: ssh ec2-user@107.23.232.171 "cd /path/to/send; docker load -i circleci-example.tar; docker run circleci/example"
 # build-and-test라는 workflow에는 build-and-test라는 Job을 가지고 있다는 의미입니다.
 workflows:
     build-and-test:
